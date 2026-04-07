@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { motion, useScroll, useSpring, useInView } from 'motion/react';
 import { ArrowUpRight, ArrowDown, Download, Award, GraduationCap, Github, Linkedin, Mail, Globe } from 'lucide-react';
+import me from './me.jpg';
 
 // --- DATA: Add or edit projects here in the future ---
 const PROJECTS = [
@@ -122,8 +123,12 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative"
           >
-            <h1 className="font-display text-[18vw] md:text-[13vw] leading-[0.8] font-bold tracking-tighter uppercase text-white mb-6 transition-colors duration-500">
+            {/* Subtle Spotlight */}
+            <div className="absolute -top-1/2 -left-1/4 w-[150%] h-[200%] bg-[radial-gradient(circle_at_center,rgba(217,92,20,0.08)_0%,transparent_70%)] blur-[100px] pointer-events-none z-0" />
+            
+            <h1 className="font-display text-[18vw] md:text-[13vw] leading-[0.8] font-bold tracking-tighter uppercase text-white mb-6 transition-colors duration-500 relative z-10">
               Lumin<span className="text-[#d95c14]">.</span>
             </h1>
           </motion.div>
@@ -134,9 +139,14 @@ export default function App() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           >
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-              <h2 className="text-lg md:text-2xl text-[#888] uppercase tracking-widest font-display">
-                Faisal Azizi
-              </h2>
+              <div className="flex flex-col gap-2">
+                <h2 className="text-lg md:text-2xl text-[#888] uppercase tracking-widest font-display">
+                  Faisal Azizi
+                </h2>
+                <span className="text-[10px] md:text-xs text-[#555] uppercase tracking-[0.5em] font-medium">
+                  Game Programmer // Developer
+                </span>
+              </div>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
@@ -354,8 +364,26 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="border-t border-[#333] p-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#555] uppercase tracking-widest relative z-10 bg-[#0a0a0a]">
-        <p>© {new Date().getFullYear()} LUMIN // FAISAL AZIZI</p>
+      <footer className="border-t border-[#333] p-8 md:px-12 flex items-center justify-center gap-4 relative z-10 bg-[#0a0a0a]">
+        <motion.div 
+          initial={{ opacity: 0, x: -10 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          className="w-10 h-10 rounded-full overflow-hidden border border-white/5 grayscale"
+        >
+          <img 
+            src={me} 
+            alt="Faisal Azizi" 
+            className="w-full h-full object-cover mix-blend-screen"
+            style={{
+              maskImage: 'radial-gradient(circle, black 30%, transparent 85%)',
+              WebkitMaskImage: 'radial-gradient(circle, black 30%, transparent 85%)'
+            }}
+          />
+        </motion.div>
+        <p className="text-[10px] md:text-xs text-[#555] uppercase tracking-[0.4em] font-medium">
+          © {new Date().getFullYear()} LUMIN // FAISAL AZIZI
+        </p>
       </footer>
     </div>
   );
