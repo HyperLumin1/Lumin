@@ -38,6 +38,7 @@ const PROJECTS = [
     description: "A Unity Editor tool for selection history, favorites, and scene navigation. Built a custom UI with drag-and-drop support and persistent tracking.",
     image: "https://assetstorev1-prd-cdn.unity3d.com/key-image/4ace0a03-c4ee-447a-82d7-724d963fd5a4.png",
     tags: ["Editor Scripting", "UI/UX", "Custom Serialization", "Tooling"],
+    isAsset: true,
     links: [
       { url: "https://assetstore.unity.com/packages/tools/utilities/flowrecall-pro-selection-history-favorites-324610", text: "View on Asset Store" }
     ],
@@ -73,7 +74,7 @@ const PROJECTS = [
 ];
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<'projects' | 'prototypes'>('projects');
+  const [activeTab, setActiveTab] = useState<'projects' | 'assets' | 'prototypes'>('projects');
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -194,6 +195,12 @@ export default function App() {
               Projects
             </button>
             <button 
+              onClick={() => setActiveTab('assets')}
+              className={`pb-2 border-b-2 transition-colors ${activeTab === 'assets' ? 'border-[#d95c14] text-white' : 'border-transparent text-[#666] hover:text-white'}`}
+            >
+              Assets
+            </button>
+            <button 
               onClick={() => setActiveTab('prototypes')}
               className={`pb-2 border-b-2 transition-colors ${activeTab === 'prototypes' ? 'border-[#d95c14] text-white' : 'border-transparent text-[#666] hover:text-white'}`}
             >
@@ -204,6 +211,56 @@ export default function App() {
           {activeTab === 'projects' && (
             <div className="flex flex-col gap-24 md:gap-32">
               {PROJECTS.map((project, index) => (
+                <motion.div 
+                  key={project.id}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8 }}
+                  className="group"
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                    <div className={`md:col-span-8 overflow-hidden bg-[#111] relative rounded-sm ${project.imageOrder}`}>
+                      <img 
+                        src={project.image} 
+                        alt={project.title} 
+                        className="w-full aspect-[4/3] md:aspect-[16/9] object-cover transition-all duration-700 scale-105 group-hover:scale-100 opacity-80 group-hover:opacity-100"
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+                    <div className={`md:col-span-4 flex flex-col justify-between h-full pt-4 md:pt-0 ${project.textOrder}`}>
+                      <div>
+                        <div className="border-b border-[#333] pb-4 mb-6 flex justify-between text-xs text-[#666] uppercase tracking-widest">
+                           <span>{project.category}</span>
+                        </div>
+                        <h3 className="font-display text-4xl font-bold uppercase text-white mb-6 group-hover:translate-x-2 transition-transform duration-500">{project.title}</h3>
+                        <p className="text-[#a0a0a0] mb-8 leading-relaxed text-lg">{project.description}</p>
+                      </div>
+                      <div>
+                        <div className="flex flex-wrap gap-x-4 gap-y-3 text-xs text-[#888] uppercase tracking-wider mb-10">
+                          {project.tags.map(tag => (
+                            <span key={tag} className="border border-[#333] px-4 py-1.5 rounded-full">{tag}</span>
+                          ))}
+                        </div>
+                        <div className="flex flex-wrap gap-6">
+                          {project.links.map((link, i) => (
+                            <a key={i} href={link.url} target={link.url.startsWith('http') ? "_blank" : "_self"} rel={link.url.startsWith('http') ? "noopener noreferrer" : ""} className="inline-flex items-center gap-2 text-sm text-white hover:text-[#d95c14] transition-colors group/link uppercase tracking-wider font-medium">
+                              <span className="border-b border-white group-hover/link:border-[#d95c14] pb-1">{link.text}</span> 
+                              <ArrowUpRight className="w-4 h-4 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
+
+          {activeTab === 'assets' && (
+            <div className="flex flex-col gap-24 md:gap-32">
+              {PROJECTS.filter(p => (p as any).isAsset).map((project, index) => (
                 <motion.div 
                   key={project.id}
                   initial={{ opacity: 0 }}
