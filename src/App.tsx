@@ -80,12 +80,11 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           >
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-              <div className="flex flex-col gap-2">
-                <h2 className="text-xl md:text-3xl text-[#888] uppercase tracking-widest font-display">
-                  Faisal Azizi
-                </h2>
-              </div>
+            <div className="flex items-center gap-6 mb-20 md:mb-24">
+              <div className="h-[1px] w-12 bg-white/20 hidden md:block" />
+              <h2 className="text-sm md:text-base text-white/50 uppercase tracking-[0.8em] font-display">
+                Faisal Azizi
+              </h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24">
@@ -96,10 +95,7 @@ export default function App() {
                 </p>
                 <div className="space-y-8 text-lg md:text-xl text-[#888] leading-relaxed">
                   <p>
-                    I am a dedicated <strong className="text-white/80 font-medium">Unity Game Developer</strong> with 5+ years of experience specialized in <strong className="text-white/80 font-medium">gameplay</strong> and <strong className="text-white/80 font-medium">systems architecture</strong>. I have architected and launched titles across several platforms, including <strong className="text-white/80 font-medium">Steam</strong>—with full <strong className="text-white/80 font-medium">Linux</strong> and <strong className="text-white/80 font-medium">Steam Deck</strong> support. I love building <strong className="text-white/80 font-medium">custom editor tools</strong> that empower artist workflows and create robust, high-performance foundations for modern games.
-                  </p>
-                  <p>
-                    I am particularly passionate about <strong className="text-white/80 font-medium">performance optimization</strong>, <strong className="text-white/80 font-medium">gameplay systems</strong> and architecting robust software systems. I hold a <strong className="text-white/80 font-medium">Masters Degree</strong> in Computer Applications, where I focused on high-performance <strong className="text-white/80 font-medium">real-time systems</strong> and graphics software architecture.
+                    I've spent the last 5+ years as a <strong className="text-white/80 font-medium">Unity Game Developer</strong>, focusing on <strong className="text-white/80 font-medium">gameplay systems</strong>, <strong className="text-white/80 font-medium">performance optimization</strong>, and creating <strong className="text-white/80 font-medium">custom editor tools</strong>. I’ve also published games on <strong className="text-white/80 font-medium">Steam</strong> with full <strong className="text-white/80 font-medium">Linux</strong> and <strong className="text-white/80 font-medium">Steam Deck</strong> support. I hold a <strong className="text-white/80 font-medium">Masters Degree</strong> in Computer Applications, where I spent a lot of time focusing on real-time systems.
                   </p>
                 </div>
               </div>
@@ -135,7 +131,7 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="pt-8 flex flex-col sm:flex-row gap-8 text-sm font-medium uppercase tracking-widest mt-auto border-t border-white/5">
+                <div className="pt-8 flex flex-row items-center gap-x-10 gap-y-4 flex-wrap text-sm font-medium uppercase tracking-widest mt-auto border-t border-white/5">
                     <a href="#work" className="flex items-center gap-2 text-white hover:text-[#d95c14] transition-colors w-fit border-b border-white hover:border-[#d95c14] pb-1 group/btn">
                       Portfolio <ArrowDown className="w-4 h-4 group-hover/btn:translate-y-1 transition-transform" />
                     </a>
