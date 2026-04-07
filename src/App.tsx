@@ -108,10 +108,10 @@ export default function App() {
                 </div>
 
                 <div className="flex flex-wrap items-center gap-6 text-[#888]">
-                  <a href="https://github.com/FaisalAzizi" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                  <a href="https://github.com/HyperLumin1" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                     <Github className="w-6 h-6" />
                   </a>
-                  <a href="https://linkedin.com/in/faisalazizi" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                  <a href="https://linkedin.com/in/faisal-azizi" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                     <Linkedin className="w-6 h-6" />
                   </a>
                   <a href="https://luminassets.info" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
