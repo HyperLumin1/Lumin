@@ -18,7 +18,7 @@ export default function App() {
   const isHeroInView = useInView(heroRef, { margin: "-10% 0px 0px 0px" });
 
   const workRef = useRef(null);
-  const isWorkInView = useInView(workRef, { margin: "-20% 0px -80% 0px" }); // Adjusted margin to trigger nicely
+  const isWorkInView = useInView(workRef, { margin: "-20% 0px -80% 0px" });
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#e0e0e0] font-sans selection:bg-[#d95c14] selection:text-white relative overflow-x-hidden md:cursor-none">
@@ -59,7 +59,7 @@ export default function App() {
 
       <main className="px-5 md:px-12 max-w-[1400px] mx-auto pt-28 md:pt-40 pb-20 md:pb-32 relative z-10">
         {/* Hero */}
-        <section className="mb-32 md:mb-40 min-h-[50vh] md:min-h-[60vh] flex flex-col justify-center">
+        <section className="mb-32 md:mb-56 min-h-[60vh] md:min-h-[70vh] flex flex-col justify-center">
           <motion.div
             ref={heroRef}
             initial={{ opacity: 0, y: 20 }}
@@ -82,55 +82,66 @@ export default function App() {
           >
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
               <div className="flex flex-col gap-2">
-                <h2 className="text-lg md:text-2xl text-[#888] uppercase tracking-widest font-display">
+                <h2 className="text-xl md:text-3xl text-[#888] uppercase tracking-widest font-display">
                   Faisal Azizi
                 </h2>
-                <span className="text-[10px] md:text-xs text-[#555] uppercase tracking-[0.5em] font-medium">
-                  Game Programmer // Developer
-                </span>
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-              <div className="md:col-span-10 lg:col-span-8">
-                <p className="text-xl md:text-2xl text-[#a0a0a0] leading-relaxed font-medium mb-12">
-                  Experienced Unity developer with 5+ years building games and editor tools for PC and mobile platforms. Specialized in gameplay systems, rendering, optimization, and workflow automation.
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24">
+              {/* Profile Bio */}
+              <div className="md:col-span-12 lg:col-span-7">
+                <p className="text-2xl md:text-4xl text-white/90 leading-tight font-medium mb-12">
+                  Unity Game Developer / Programmer
                 </p>
-                
-                <div className="flex flex-col gap-4 mb-12">
-                  <div className="flex items-center gap-4 text-[#888]">
-                    <GraduationCap className="w-6 h-6 text-[#d95c14]" />
-                    <span className="text-base md:text-lg">Master's Degree</span>
+                <div className="space-y-8 text-lg md:text-xl text-[#888] leading-relaxed">
+                  <p>
+                    I am a dedicated <strong className="text-white/80 font-medium">Unity Game Developer</strong> with 5+ years of experience specialized in <strong className="text-white/80 font-medium">gameplay</strong> and <strong className="text-white/80 font-medium">systems architecture</strong>. I have architected and launched titles across several platforms, including <strong className="text-white/80 font-medium">Steam</strong>—with full <strong className="text-white/80 font-medium">Linux</strong> and <strong className="text-white/80 font-medium">Steam Deck</strong> support. I love building <strong className="text-white/80 font-medium">custom editor tools</strong> that empower artist workflows and create robust, high-performance foundations for modern games.
+                  </p>
+                  <p>
+                    I am particularly passionate about <strong className="text-white/80 font-medium">performance optimization</strong>, <strong className="text-white/80 font-medium">gameplay systems</strong> and architecting robust software systems. I hold a <strong className="text-white/80 font-medium">Masters Degree</strong> in Computer Applications, where I focused on high-performance <strong className="text-white/80 font-medium">real-time systems</strong> and graphics software architecture.
+                  </p>
+                </div>
+              </div>
+
+              {/* Architectural Detail List */}
+              <div className="md:col-span-12 lg:col-span-5 flex flex-col gap-12 md:pl-12 md:border-l border-white/10">
+                <div className="space-y-8">
+                  <div className="group">
+                    <span className="block text-[10px] text-[#555] uppercase tracking-[0.3em] mb-3 group-hover:text-[#d95c14] transition-colors">Recognition</span>
+                    <h4 className="text-lg text-[#eee] font-medium">Academic Excellence Certificate</h4>
+                    <p className="text-sm text-[#666] mt-1">Awarded to the Department Topper</p>
                   </div>
-                  <div className="flex items-center gap-4 text-[#888]">
-                    <Award className="w-6 h-6 text-[#d95c14]" />
-                    <span className="text-base md:text-lg">Academic Excellence Certificate (Topper)</span>
+
+                  <div className="group">
+                    <span className="block text-[10px] text-[#555] uppercase tracking-[0.3em] mb-3 group-hover:text-[#d95c14] transition-colors">Education</span>
+                    <h4 className="text-lg text-[#eee] font-medium">Masters Degree in Computer Applications</h4>
+                    <p className="text-sm text-[#666] mt-1">Specialized in Real-time Systems</p>
+                  </div>
+
+                  <div className="group">
+                    <span className="block text-[10px] text-[#555] uppercase tracking-[0.3em] mb-3 group-hover:text-[#d95c14] transition-colors">Contact</span>
+                    <div className="flex flex-col gap-3">
+                      <a href="mailto:FaisalAzizi.K@gmail.com" className="text-lg text-[#eee] hover:text-[#d95c14] transition-colors w-fit">FaisalAzizi.K@gmail.com</a>
+                      <div className="flex items-center gap-6 pt-2">
+                        <a href="https://github.com/HyperLumin1" target="_blank" rel="noopener noreferrer" className="text-[#555] hover:text-white hover:scale-110 transition-all">
+                          <Github className="w-6 h-6" />
+                        </a>
+                        <a href="https://linkedin.com/in/faisal-azizi" target="_blank" rel="noopener noreferrer" className="text-[#555] hover:text-white hover:scale-110 transition-all">
+                          <Linkedin className="w-6 h-6" />
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row flex-wrap gap-8 text-sm font-medium uppercase tracking-wider mb-12">
-                  <a href="#work" className="flex items-center gap-2 text-white hover:text-[#d95c14] transition-colors w-fit border-b border-white hover:border-[#d95c14] pb-1 group/btn">
-                    View Portfolio <ArrowDown className="w-4 h-4 group-hover/btn:translate-y-1 transition-transform" />
-                  </a>
-                  <a href="/Faisal_Azizi_CV.pdf" download="Faisal_Azizi_CV.pdf" className="flex items-center gap-2 text-[#888] hover:text-[#d95c14] transition-colors w-fit border-b border-transparent hover:border-[#d95c14] pb-1 group/btn">
-                    Download CV <Download className="w-4 h-4 group-hover/btn:translate-y-1 transition-transform" />
-                  </a>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-6 text-[#888]">
-                  <a href="https://github.com/HyperLumin1" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                    <Github className="w-6 h-6" />
-                  </a>
-                  <a href="https://linkedin.com/in/faisal-azizi" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                    <Linkedin className="w-6 h-6" />
-                  </a>
-                  <a href="https://luminassets.info" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                    <Globe className="w-6 h-6" />
-                  </a>
-                  <a href="mailto:FaisalAzizi.K@gmail.com" className="flex items-center gap-2 hover:text-white transition-colors text-sm font-medium tracking-wider">
-                    <Mail className="w-5 h-5" />
-                    <span>FaisalAzizi.K@gmail.com</span>
-                  </a>
+                <div className="pt-8 flex flex-col sm:flex-row gap-8 text-sm font-medium uppercase tracking-widest mt-auto border-t border-white/5">
+                    <a href="#work" className="flex items-center gap-2 text-white hover:text-[#d95c14] transition-colors w-fit border-b border-white hover:border-[#d95c14] pb-1 group/btn">
+                      Portfolio <ArrowDown className="w-4 h-4 group-hover/btn:translate-y-1 transition-transform" />
+                    </a>
+                    <a href="/Faisal_Azizi_CV.pdf" download="Faisal_Azizi_CV.pdf" className="flex items-center gap-2 text-[#888] hover:text-[#d95c14] transition-colors w-fit border-b border-transparent hover:border-[#d95c14] pb-1 group/btn">
+                      Resume <Download className="w-4 h-4 group-hover/btn:translate-y-1 transition-transform" />
+                    </a>
                 </div>
               </div>
             </div>
