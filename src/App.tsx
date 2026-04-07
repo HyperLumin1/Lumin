@@ -13,8 +13,12 @@ export default function App() {
     damping: 30,
     restDelta: 0.001
   });
+  
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef, { margin: "-10% 0px 0px 0px" });
+
+  const workRef = useRef(null);
+  const isWorkInView = useInView(workRef, { margin: "-20% 0px -80% 0px" }); // Adjusted margin to trigger nicely
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#e0e0e0] font-sans selection:bg-[#d95c14] selection:text-white relative overflow-x-hidden md:cursor-none">
@@ -42,9 +46,15 @@ export default function App() {
         >
           Lumin<span className="text-[#d95c14]">.</span>
         </motion.div>
-        <div className="flex gap-5 md:gap-6 text-xs md:text-sm font-medium pointer-events-auto tracking-wide uppercase">
+        
+        <motion.div 
+          initial={{ opacity: 1 }}
+          animate={{ opacity: isWorkInView ? 0 : 1, y: isWorkInView ? -10 : 0 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="flex gap-5 md:gap-6 text-xs md:text-sm font-medium pointer-events-auto tracking-wide uppercase"
+        >
           <a href="#work" onClick={() => setActiveTab('projects')} className="hover:text-[#d95c14] transition-colors">Work</a>
-        </div>
+        </motion.div>
       </header>
 
       <main className="px-5 md:px-12 max-w-[1400px] mx-auto pt-28 md:pt-40 pb-20 md:pb-32 relative z-10">
@@ -128,7 +138,7 @@ export default function App() {
         </section>
 
         {/* Work */}
-        <section id="work" className="mb-40">
+        <section id="work" ref={workRef} className="mb-40">
           <div className="border-t border-[#333] pt-8 mb-20 flex gap-8 md:gap-12 text-2xl md:text-3xl font-display font-bold uppercase tracking-tighter">
             <button 
               onClick={() => setActiveTab('projects')}
