@@ -51,9 +51,17 @@ export default function App() {
           initial={{ opacity: 1 }}
           animate={{ opacity: isWorkInView ? 0 : 1, y: isWorkInView ? -10 : 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="flex gap-5 md:gap-6 text-xs md:text-sm font-medium pointer-events-auto tracking-wide uppercase"
+          className="flex gap-5 md:gap-8 text-xs md:text-sm font-medium pointer-events-auto tracking-wide uppercase items-center"
         >
           <a href="#work" onClick={() => setActiveTab('projects')} className="hover:text-[#d95c14] transition-colors">Work</a>
+          <a 
+            href="https://tools.hyperlumin.dev" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="hover:text-[#d95c14] transition-colors flex items-center gap-1 opacity-80 hover:opacity-100"
+          >
+            Assets <ArrowUpRight className="w-3 h-3" />
+          </a>
         </motion.div>
       </header>
 
